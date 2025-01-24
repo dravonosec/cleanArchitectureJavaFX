@@ -40,9 +40,13 @@ public class TaskView extends VBox {
                 super.updateItem(viewModel, empty);
                 if (empty || viewModel == null) {
                     setGraphic(null);
+                    checkbox.textProperty().unbind();
+                    if (viewModel != null) {
+                        checkbox.selectedProperty().unbindBidirectional(viewModel.completedProperty());
+                    }
                 } else {
                     checkbox.textProperty().bind(viewModel.titleProperty());
-                    checkbox.selectedProperty().bind(viewModel.completedProperty());
+                    checkbox.selectedProperty().bindBidirectional(viewModel.completedProperty());
                     setGraphic(container);
                 }
             }

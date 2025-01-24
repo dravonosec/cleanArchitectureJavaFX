@@ -7,7 +7,6 @@ import org.example.cleanarchitecturejavafx.domain.repository.TaskRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// Use Case
 public class TaskService {
     private final TaskRepository repository;
 
@@ -29,10 +28,18 @@ public class TaskService {
 
     // маппинг методы
     private TaskDTO mapToDTO(Task task) {
-        return null;
+        TaskDTO taskDTO = new TaskDTO();
+        taskDTO.setId(task.getId());
+        taskDTO.setTitle(task.getTitle());
+        taskDTO.setCompleted(task.isCompleted());
+        return taskDTO;
     }
 
     private Task mapToEntity(TaskDTO dto) {
-        return null;
+        Task task = new Task();
+        task.setId(dto.getId());
+        task.setTitle(dto.getTitle());
+        task.setCompleted(dto.isCompleted());
+        return task;
     }
 }
